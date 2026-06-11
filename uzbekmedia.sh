@@ -2,7 +2,8 @@
 
 # uzbekmedia.sh: Scrapes media at yande.re,konachan.com,danbooru.donmai.us
 
-#read -p "Enter the tag: " TAG
+# read -p "Enter the tag: " TAG
+# read -p "Enter the booru: " BOORU
 
 HARDCODED_RATING=+-rating%3Asafe
 HARDCODED_RATING_DANBOORU=+rating%3Aexplicit
@@ -21,6 +22,13 @@ fi
 
 TAG=$1
 BOORU=$2
+
+# if [ -z "$TAG" ] || [ -z "$BOORU" ]; then
+#  No tag and booru specified.
+#   echo "A tag is required."
+#   echo "A booru is required."
+#   exit 1
+# fi
 
 case "$BOORU" in
   yandere)
@@ -44,13 +52,6 @@ case "$BOORU" in
     exit 1
     ;;
 esac
-
-#if [ -z "$TAG" ] || [ -z "$BOORU" ]; then
- # No tag and booru specified.
-  #echo "A tag is required."
-  #echo "A booru is required.
-  #exit 1
-#fi
 
 # Create directory for the images
 mkdir -p "$DIR"
