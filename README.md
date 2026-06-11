@@ -1,9 +1,9 @@
-## uzbekpics ✅
+## uzbekmedia ✅
 
-it scrapes halal pics at yande.re da ✅
+it scrapes halal media at boorus da ✅
 
 ## halal usage:
 
 ```
-uzbekpics.sh date_a_live
+uzbekmedia.sh date_a_live booru
 ```
