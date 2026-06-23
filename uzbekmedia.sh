@@ -28,6 +28,8 @@ TAG=$1
 BOORU=$2
 LIMIT=$3
 
+TAGS=$(echo "$TAG" | tr '+' '_')
+
 # if [ -z "$TAG" ] || [ -z "$BOORU" ]; then
 #  No tag and booru specified.
 #   echo "A tag is required."
@@ -38,17 +40,17 @@ LIMIT=$3
 case "$BOORU" in
   yandere)
     URL="${YANDERE_URL}${API_QUERY}${TAG}${HARDCODED_RATING}${HARDCODED_EXCLUDED_TAG}"
-    DIR="yandere_$TAG"
+    DIR="yandere_$TAGS"
     JQ_FILTER='.[].jpeg_url'
     ;;
   konachan)
     URL="${KONACHAN_URL}${API_QUERY}${TAG}${HARDCODED_RATING}"
-    DIR="konachan_$TAG"
+    DIR="konachan_$TAGS"
     JQ_FILTER='.[].jpeg_url'
     ;;
   danbooru)
     URL="${DANBOORU_API}${TAG}${HARDCODED_RATING_DANBOORU}"
-    DIR="danbooru_$TAG"
+    DIR="danbooru_$TAGS"
     JQ_FILTER='.[].file_url'
     ;;
   rule34)
@@ -71,5 +73,5 @@ fi
 # Create directory for the images
 mkdir -p "$DIR"
 
-# Download the image
+# Download medias
 curl -s "$URL" | jq -r "$JQ_FILTER" | aria2c -c -i- -d "$DIR"
