@@ -70,7 +70,6 @@ if [ -n "$LIMIT" ]; then
   URL="${URL}&limit=${LIMIT}"
 fi
 
-# Create directory for the images
 mkdir -p "$DIR"
 
 # Download medias
