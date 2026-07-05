@@ -10,13 +10,12 @@ HARDCODED_RATING=+-rating%3Asafe
 HARDCODED_RATING_DANBOORU=+rating%3Aexplicit
 HARDCODED_EXCLUDED_TAG=+-transparent_png
 HARDCODED_RULE34_EXCLUDED_TAG=+-ai_generated
-YANDERE_URL="https://yande.re"
-KONACHAN_URL="https://konachan.com"
+YANDERE_API="https://yande.re/post.json?tags="
+KONACHAN_API="https://konachan.com/post.json?tags="
 DANBOORU_API="https://danbooru.donmai.us/posts.json?tags="
 RULE34_API="https://api.rule34.xxx/index.php?page=dapi&s=post&q=index&json=1&tags="
 RULE34_API_KEY="1b7ac421841879b859d0a0d771b6df8e4a3419e0ce54f234e90bc0c8969ac6ada2972a757a25a606e33dfa9bbd946a0ca231f90c38644336367db73f918b61ed"
 RULE34_USER_ID="5925125"
-API_QUERY="/post.json?tags="
 
 if [ -z "$1" ] || [ -z "$2" ]; then
  # No tag and booru specified.
@@ -40,12 +39,12 @@ TAGS=$(echo "$TAG" | tr '+' '_')
 
 case "$BOORU" in
   yandere)
-    URL="${YANDERE_URL}${API_QUERY}${TAG}${HARDCODED_RATING}${HARDCODED_EXCLUDED_TAG}"
+    URL="${YANDERE_API}${TAG}${HARDCODED_RATING}${HARDCODED_EXCLUDED_TAG}"
     DIR="yandere_$TAGS"
     JQ_FILTER='.[].jpeg_url'
     ;;
   konachan)
-    URL="${KONACHAN_URL}${API_QUERY}${TAG}${HARDCODED_RATING}"
+    URL="${KONACHAN_API}${TAG}${HARDCODED_RATING}"
     DIR="konachan_$TAGS"
     JQ_FILTER='.[].jpeg_url'
     ;;
