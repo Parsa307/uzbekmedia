@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# uzbekmedia.sh: Scrapes media at yande.re,konachan.com,danbooru.donmai.us,rule34.xxx
+# uzbekmedia.sh: Scrapes media at yande.re,konachan.com,danbooru.donmai.us,safebooru.org,waifu.im,rule34.xxx
 
 # read -p "Enter the tag: " TAG
 # read -p "Enter the booru: " BOORU
