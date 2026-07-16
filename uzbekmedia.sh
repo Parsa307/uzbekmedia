@@ -13,6 +13,7 @@ HARDCODED_RULE34_EXCLUDED_TAG=+-ai_generated
 YANDERE_API="https://yande.re/post.json?tags="
 KONACHAN_API="https://konachan.com/post.json?tags="
 DANBOORU_API="https://danbooru.donmai.us/posts.json?tags="
+SAFEBOORU_API="https://safebooru.org/index.php?page=dapi&s=post&q=index&json=1&tags="
 WAIFUIM_API="https://api.waifu.im/images?IsNsfw=True&IncludedTags="
 RULE34_API="https://api.rule34.xxx/index.php?page=dapi&s=post&q=index&json=1&tags="
 RULE34_API_KEY="1b7ac421841879b859d0a0d771b6df8e4a3419e0ce54f234e90bc0c8969ac6ada2972a757a25a606e33dfa9bbd946a0ca231f90c38644336367db73f918b61ed"
@@ -52,6 +53,11 @@ case "$BOORU" in
   danbooru)
     URL="${DANBOORU_API}${TAG}${HARDCODED_RATING_DANBOORU}"
     DIR="danbooru_$TAGS"
+    JQ_FILTER='.[].file_url'
+    ;;
+  safebooru)
+    URL="${SAFEBOORU_API}${TAG}"
+    DIR="safebooru_$TAGS"
     JQ_FILTER='.[].file_url'
     ;;
   waifuim)
