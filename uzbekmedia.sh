@@ -30,8 +30,6 @@ TAG=$1
 BOORU=$2
 LIMIT=$3
 
-TAGS=$(echo "$TAG" | tr '+' '_')
-
 # if [ -z "$TAG" ] || [ -z "$BOORU" ]; then
 #  No tag and booru specified.
 #   echo "A tag is required."
@@ -42,32 +40,32 @@ TAGS=$(echo "$TAG" | tr '+' '_')
 case "$BOORU" in
   yandere)
     URL="${YANDERE_API}${TAG}${HARDCODED_RATING}${HARDCODED_EXCLUDED_TAG}"
-    DIR="yandere_$TAGS"
+    DIR="yandere"
     JQ_FILTER='.[].jpeg_url'
     ;;
   konachan)
     URL="${KONACHAN_API}${TAG}${HARDCODED_RATING}"
-    DIR="konachan_$TAGS"
+    DIR="konachan"
     JQ_FILTER='.[].jpeg_url'
     ;;
   danbooru)
     URL="${DANBOORU_API}${TAG}${HARDCODED_RATING_DANBOORU}"
-    DIR="danbooru_$TAGS"
+    DIR="danbooru"
     JQ_FILTER='.[].file_url'
     ;;
   safebooru)
     URL="${SAFEBOORU_API}${TAG}"
-    DIR="safebooru_$TAGS"
+    DIR="safebooru"
     JQ_FILTER='.[].file_url'
     ;;
   waifuim)
     URL="${WAIFUIM_API}${TAG}"
-    DIR="waifuim_$TAGS"
+    DIR="waifuim"
     JQ_FILTER='.items[].url'
     ;;
   rule34)
     URL="${RULE34_API}${TAG}${HARDCODED_RULE34_EXCLUDED_TAG}&api_key=${RULE34_API_KEY}&user_id=${RULE34_USER_ID}"
-    DIR="rule34_$TAGS"
+    DIR="rule34"
     JQ_FILTER='.[].file_url'
     ;;
   *)
